@@ -1,21 +1,21 @@
 #include<iostream>
 using namespace std;
 
-class binary1{
+class binary{
     int a;
   public:
-    binary1(int b){
+    binary(int b){
         a = b;
     }
-    friend binary1 operator +(int x, binary1 b){
+    friend binary operator +(int x, binary b){
         b.a = x + b.a;
         return b;
     }
-    binary1 operator * (binary1 b){
+    binary operator * (binary b){
         b.a = a * b.a;
         return b;
     }
-    friend binary1 operator - (binary1 b, int p){
+    friend binary operator - (binary b, int p){
         b.a = b.a - p;
         return b;
     }
@@ -25,7 +25,7 @@ class binary1{
 };
 
 int main(){
-    binary1 x(10), y(20);
+    binary x(10), y(20);
     cout << "Contents of X: ";
     x.display();
     cout << "Contents of Y: ";
