@@ -2,8 +2,30 @@
 #include<string.h>
 using namespace std;
 
+class string1{
+	char *s;
+	int len;
+  public: 
+  	string1(){}
+  	friend void operator >> (istream &in, string1 &x){
+  		char i, *j;
+  		int l = 1;
+  		x.len = 1;
+		while(i != '\t' || i != '\r'){
+			j = new char[len];
+			in >> i;
+			
+			x.len++, l++;
+			strcat(j, i);
+		}
+	}
+	int length(){
+		return len;
+	}
+};
+
 int main(){
-    string s1, s2, s3;
+    string1 s1, s2, s3;
     cout << "Enter string 1: ";
     cin >> s1;
     cout << "Enter string 2: ";
