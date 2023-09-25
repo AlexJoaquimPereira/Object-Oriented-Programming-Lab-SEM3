@@ -38,7 +38,7 @@ class books{
 
     int is_available(char t[20], char a[20]) {
         for(int i = 0; i < n; i++){
-            if (t == book[i].title && a == book[i].author)
+            if (strcmp(t, book[i].title) == 0 && strcmp(a, book[i].author) == 0)
                 return i+1;
         }
         return 0;
@@ -89,7 +89,7 @@ class books{
         cout << "Enter new price of the book: ";
         cin >> new_price;
         b.book[x].price = new_price;
-        cout << "Price updated\n";
+        cout << "\nPrice updated\n";
         cout << "Updated book Details: " << endl;
         cout << "Title: " << b.book[x].title << endl;
         cout << "Author: " << b.book[x].author << endl;
@@ -106,7 +106,7 @@ int main() {
     books b;
     int s;
     do {
-        cout << "1. Process Transaction" << endl;
+        cout << "\n1. Process Transaction" << endl;
         cout << "2. Update price of a book" << endl;
         cout << "3. Display Transaction Statistics" << endl;
         cout << "4. Exit" << endl;
@@ -121,7 +121,7 @@ int main() {
                 cin >> t >> a;
                 int x;
                 if (x = b.is_available(t, a))
-                    b = change_price(x--, b);
+                    b = change_price(x-1, b);
                 break;
             case 3: b.display_stats();
                 break;
