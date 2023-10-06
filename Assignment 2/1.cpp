@@ -41,3 +41,12 @@ DM addition(DM a, DB b){
     x.metres = x.metres + (x.centimetres / 100);
     return x;
 }
+int main(){
+    DM metric, sum;
+    DB imperial;
+    metric.getdata();
+    imperial.getdata();
+    cout << "Adding both...";
+    sum = addition(metric, imperial);
+    sum.display();
+}
