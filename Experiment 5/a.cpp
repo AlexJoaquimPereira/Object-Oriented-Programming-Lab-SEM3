@@ -1,25 +1,18 @@
 #include<iostream>
+#include<stdbool.h>
 using namespace std;
 
-class salary{
-    int s;
-  public:
-    void getsalary(){
-        cout << "Enter the salary: ";
-        cin >> s;
-    }
-    void displaysalary(){
-        cout << "Salary: Rs "<<s<<endl;
-    }
+class theory{
+    bool pass;
+    int sem_marks;
+    int IT_marks;
+    float s;
 };
-class manager : public salary{
-};
-class developer : public salary{
+
+class termwork{
 
 };
-class HR : public salary{
+
+class student{
 
 };
-int main(){
-
-}
