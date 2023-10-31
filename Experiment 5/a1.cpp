@@ -1,7 +1,5 @@
 #include<iostream>
-#include<stdbool.h>
 using namespace std;
-//typedef enum {y, n} bool;
 
 class student{
   protected:
@@ -11,14 +9,13 @@ class student{
     float CGPA;
   public:
     student(){
-        tot_marks = 0;
-        CGPA = 0;
+        tot_marks = 0, CGPA = 0;
     }
     void get_basic_data(){
         cout << "Enter the roll number: ";
         cin >> roll;
         cout << "Enter the name: ";
-        cin.getline(name, 20);
+        cin.getline(name, 20); cin.ignore();
     }
     void update_tot_marks(int x){
         tot_marks += x;
@@ -35,11 +32,31 @@ class student{
 };
 
 class arts : public student{
-    
+  protected:
+    int sem;
+  public:
+    arts(){
+        sem = 1;
+    }
+    void get_arts_data(){
+        get_basic_data();
+        cout << "Enter current semester: ";
+        cin >> sem;
+    }
 };
 
 class med : public student{
-
+  protected:
+    int sem;
+  public:
+    med(){
+        sem = 1;
+    }
+    void get_med_data(){
+        get_basic_data();
+        cout << "Enter current semester: ";
+        cin >> sem;
+    }
 };
 
 class engg : public student{
@@ -64,20 +81,50 @@ class engg : public student{
     }
 };
 class mech : public engg{
-
+    int oops, ds, ld, co, maths;
+  public:
+    mech(){
+        oops = 0, ds = 0, ld = 0, co = 0, maths = 0;
+    }
+    void get_data(){
+        get_basic_data();
+        get_engg_data();
+        cout << "Enter the marks of OOPS, DS, LD, CO, Maths: ";
+        cin >> oops >> ds >> ld >> co >> maths;
+        update_tot_marks(oops+ds+ld+co+maths);
+    }
+    void calculate_cgpa(){
+        float gpa;
+        gpa = ((oops + ds + ld) * 3) + ((co + maths) * 4);
+        gpa = gpa / 17;
+        update_cgpa(gpa);
+    }
 };
 class etc : public engg{
-    
+    int oops, ds, ld, co, maths;
+  public:
+    etc(){
+        oops = 0, ds = 0, ld = 0, co = 0, maths = 0;
+    }
+    void get_data(){
+        get_basic_data();
+        get_engg_data();
+        cout << "Enter the marks of OOPS, DS, LD, CO, Maths: ";
+        cin >> oops >> ds >> ld >> co >> maths;
+        update_tot_marks(oops+ds+ld+co+maths);
+    }
+    void calculate_cgpa(){
+        float gpa;
+        gpa = ((oops + ds + ld) * 3) + ((co + maths) * 4);
+        gpa = gpa / 17;
+        update_cgpa(gpa);
+    }
 };
 class comp : public engg{
     int oops, ds, ld, co, maths;
   public:
     comp(){
-        oops = 0; 
-        ds = 0;
-        ld = 0;
-        co = 0;
-        maths = 0;
+        oops = 0, ds = 0, ld = 0, co = 0, maths = 0;
     }
     void get_data(){
         get_basic_data();
@@ -95,6 +142,11 @@ class comp : public engg{
 };
 
 int main(){
-
+    comp C;
+    etc E;
+    mech M;
+    arts A;
+    med D;
+    C.get_data();
     return 0;
 }
