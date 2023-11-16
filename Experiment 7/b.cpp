@@ -1,8 +1,8 @@
 #include<iostream>
 #include<string.h>
-#define SPACE ' '
+#define SPACE '\x20'
 #define NEWLINE '\n'
-#define DEL '\x1A'
+#define DEL '\x05'
 #define MAX 1024
 using namespace std;
 
@@ -13,6 +13,8 @@ class output{
     char text[MAX];
   public:
     void get_text(){
+        cout << "Enter your text (Press Ctrl+E(Linux) or Ctrl+Z(Windows) to stop):\n";
+        cin.ignore();
         cin.getline(text, MAX, DEL);
     }
     void calc_text(){
@@ -21,11 +23,38 @@ class output{
             if(text[i] == SPACE)
                 words++;
             else if(text[i] == NEWLINE)
-                lines++;
+                lines++, words++;
         }
     }
     void display_table(){
+        cout.setf(ios::left, ios::adjustfield);
+        cout.width(25);
+        cout << "TEXT CONTENTS";
+        cout << endl;
 
+        cout.setf(ios::left, ios::adjustfield);
+        cout.width(15);
+        cout << "Lines: ";
+        cout.unsetf(ios::left);
+        cout.width(10);
+        cout << lines;
+        cout << endl;
+
+        cout.setf(ios::left, ios::adjustfield);
+        cout.width(15);
+        cout << "Words: ";
+        cout.unsetf(ios::left);
+        cout.width(10);
+        cout << words;
+        cout << endl;
+        
+        cout.setf(ios::left, ios::adjustfield);
+        cout.width(15);
+        cout << "Characters: ";
+        cout.unsetf(ios::left);
+        cout.width(10);
+        cout << characters;
+        cout << endl;
     }
 };
 
@@ -33,4 +62,5 @@ int main(){
     output A;
     A.get_text();
     A.calc_text();
+    A.display_table();
 }
