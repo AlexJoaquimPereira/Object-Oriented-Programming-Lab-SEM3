@@ -2,40 +2,46 @@
 #include<string.h>
 using namespace std;
 
-class string1{
-	char *s;
+class String{
+	char s[100];
 	int len;
   public: 
-  	string1(){}
-  	friend void operator >> (istream &in, string1 &x){
-  		char i, *j;
-  		int l = 1;
-  		x.len = 1;
-		while(i != '\t' || i != '\r'){
-			j = new char[len];
-			in >> i;
-			
-			x.len++, l++;
-			strcat(j, i);
-		}
+  	String(){
+  		strcpy(s, "");
+  	}
+  	friend void operator >> (istream &in, String &x){
+  		in >> x.s;
+  		x.len = strlen(x.s);
 	}
 	int length(){
 		return len;
 	}
+	friend String operator + (String a, String b){
+		String c;
+		strcat(c.s, a.s);
+		strcat(c.s, b.s);
+		return c;
+	}
+	friend void operator << (ostream &out, String &x){
+		out << x.s;
+	}
 };
 
 int main(){
-    string1 s1, s2, s3;
+    String s1, s2, s3;
     cout << "Enter string 1: ";
     cin >> s1;
     cout << "Enter string 2: ";
     cin >> s2;
     s3 = s1 + s2;
-    cout << "Concantenation: " << s3 <<endl;
-
+    cout << "The concatenated string is: ";
+    cout << s3;
+    
+    cout << "\nFinding out the smaller string: ";
     if(s1.length() > s2.length())
-        cout << s2 <<" is smaller\n";
+        cout << s2;
     else if (s1.length() < s2.length())
-        cout << s1 <<" is smaller\n";
-    else cout << "Both are equal\n";
+        cout << s1;
+    else cout << "Both are equal";
+    cout << endl;
 }
