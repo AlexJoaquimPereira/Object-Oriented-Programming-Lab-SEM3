@@ -14,7 +14,7 @@ class Vector{
 template<class T>
 Vector<T> :: Vector(int num){
     n = num;
-    v = new T v[n];
+    v = new T[n];
     cout << "Fill the vector: ";
     for(int i = 0; i < n; i++)
         cin >> v[i];
