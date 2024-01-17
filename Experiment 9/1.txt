@@ -1,4 +1,0 @@
-Name: Ritchie
-Roll Number: 1
-Branch: Comp
-Address: Benaulim
