@@ -14,8 +14,8 @@ class student{
     void get_basic_data(){
         cout << "Enter the roll number: ";
         cin >> roll;
-        cout << "Enter the name: ";
-        cin.getline(name, 20); cin.ignore();
+        cout << "Enter the name: ";cin.ignore();
+        cin.getline(name, 20); 
     }
     void update_tot_marks(int x){
         tot_marks += x;
